@@ -1,0 +1,56 @@
+<style>
+*{margin:0;padding:0;}
+#wrap{margin:10px auto;width:640px;overflow:hidden;}
+#wrap h1{margin:20px 0;text-align:center;color:#006393;}
+
+
+.item4{width:157px;height:203px;margin-right:3px;overflow:hidden;position:relative;float:left;cursor:pointer;}
+.item4 .caption{width:157px;height:203px;color:#fff;font-weight:bold;position:absolute;left:0;display:none;background:url(images/demo02.png) no-repeat;}
+.item4 h3{margin:10px 0 5px;height:25px;text-indent:-10000px;background-image:url(images/demo03.png);background-repeat:no-repeat;background-position:0 -8px;}
+.item4 p{padding:0 12px;margin:0;text-indent:2em;font-size:12px;line-height:20px;color:#fff;font-weight:normal;}
+.item4 img{border:0;position:absolute;}
+.item4-txt{position:absolute;left:0;top:120px;width:100%;height:50px;text-align:center;color:#FFF;overflow:hidden;background:url(images/demo02.png) no-repeat;}
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	var move = -50;
+	var zoom = 1.5;
+	$(".item4").each(function(){
+		var that=this
+		$(that).bind({
+			mouseenter:function(){
+				item4Timer=setTimeout(function(){
+					width = $(that).width() * zoom;
+					height = $(that).height() * zoom;
+					$(that).find('img').animate({'width':width, 'height':height, 'top':move, 'left':move},500);
+					$(that).find('div.caption').fadeIn(500);
+					$(that).find('.item4-txt').fadeOut(500);
+				},200);
+			},
+			mouseleave:function(){
+				clearTimeout(item4Timer);
+				$(that).find('img').animate({'width':$(that).width(), 'height':$(that).height(), 'top':'0', 'left':'0'},500);	
+				$(that).find('div.caption').fadeOut(500);
+				$(that).find('.item4-txt').fadeIn(500);
+				}
+		});
+	})	
+});
+
+</script>
+</head>
+
+
+<div id="wrap">
+	<h1>DEMO 4</h1>
+	<div class="item4">
+    	<img src="images/demo01.jpg" width="157" height="203" />
+        <div class="item4-txt">
+        	<h3>菁英团队</h3>
+        </div>
+      	<div class="caption">
+            <h3>菁英团队</h3>
+            <p><img src="play.png"></p>
+      	</div>
+    </div>
